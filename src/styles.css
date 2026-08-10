@@ -72,3 +72,18 @@ section{scroll-margin-top:88px}.worlds,.journey,.manifesto,.professional,.educat
   .primary,.secondary{width:100%;min-width:0;padding:.72rem .75rem;font-size:.65rem;line-height:1.25;min-height:44px}
 }
 @media(max-width:390px){.actions{grid-template-columns:1fr}.hero h1{font-size:3.65rem}.electionBar a>strong{font-size:.52rem}.electionBar em{font-size:.5rem}}
+
+/* Authentic portrait presentation below desktop */
+@media(max-width:1024px){
+  .hero:before{display:none}
+  .hero{background-image:none}
+  .portrait{align-self:center;height:auto;min-height:0;aspect-ratio:auto;background:transparent;border:1px solid rgba(16,29,49,.14)}
+  .portrait img{width:100%;height:auto;object-fit:contain;object-position:center;display:block}
+}
+@media(min-width:681px) and (max-width:1024px){
+  .portrait{width:100%;max-width:430px;justify-self:center}
+}
+@media(max-width:680px){
+  .portrait{width:min(88%,400px);max-width:400px;margin-inline:auto;aspect-ratio:auto}
+  .portrait img{height:auto;object-fit:contain}
+}
