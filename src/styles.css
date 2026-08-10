@@ -144,3 +144,25 @@ section{scroll-margin-top:88px}.worlds,.journey,.manifesto,.professional,.educat
   .electionBar{padding-inline:1rem}
   .electionBar em{font-size:.49rem}
 }
+
+/* Vote request and composed tablet hero */
+.voteCta{width:max-content;min-width:12.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:.8rem;padding:.82rem 1rem;background:var(--blue);color:white;font-size:.75rem;font-weight:600;letter-spacing:.035em;border:1px solid var(--blue);border-radius:0}
+.voteCta svg{transition:transform .3s ease}.voteCta:hover svg,.voteCta:focus-visible svg{transform:translate(4px,4px)}
+.hero .actions .primary{background:white;color:var(--blue);border:1px solid var(--blue)}
+#support{scroll-margin-top:132px}
+
+@media(min-width:681px) and (max-width:1024px){
+  .hero{min-height:0;align-items:start;padding-bottom:clamp(1.5rem,3vw,2.25rem)}
+  .heroCopy{padding-bottom:0}
+  .portrait{align-self:start;margin-top:clamp(6.5rem,13vw,8.5rem);min-height:0}
+  .voteCta{margin-top:.65rem;padding:.7rem .85rem;min-width:11.5rem;font-size:.68rem}
+}
+
+@media(max-width:680px){
+  .voteCta{order:4;margin:.7rem var(--gutter) 0;padding:.7rem .85rem;min-width:11.5rem;font-size:.68rem}
+  .bridge{order:5;margin-top:.9rem}
+  .portrait{order:6}
+  .hero blockquote{order:7}
+  .actions{order:8}
+  #support{scroll-margin-top:130px}
+}
