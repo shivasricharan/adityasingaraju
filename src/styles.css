@@ -87,3 +87,60 @@ section{scroll-margin-top:88px}.worlds,.journey,.manifesto,.professional,.educat
   .portrait{width:min(88%,400px);max-width:400px;margin-inline:auto;aspect-ratio:auto}
   .portrait img{height:auto;object-fit:contain}
 }
+
+
+/* Election candidature hierarchy */
+.hero h1{font-size:clamp(3.35rem,5.35vw,5.35rem);line-height:.92;letter-spacing:-.052em;white-space:nowrap;margin-bottom:1.45rem}
+.roles{margin:0 0 1.25rem}
+.candidature{display:grid;gap:0;padding:1.15rem 1.25rem 1.05rem;background:#f1f6fb;border:1px solid #c8d8e9;border-left:5px solid var(--blue);max-width:35rem;text-transform:none;letter-spacing:0;color:var(--ink)}
+.candidature strong{font-size:clamp(1.05rem,1.45vw,1.35rem);line-height:1.15;font-weight:600;letter-spacing:.035em;text-transform:uppercase;color:var(--blue)}
+.candidature>span{margin-top:.55rem;font-size:.7rem;line-height:1.35;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#263950}
+.candidature em{display:flex;align-items:baseline;gap:.55rem;margin-top:.7rem;padding-top:.65rem;border-top:1px solid #c8d8e9;font-size:.63rem;line-height:1.2;font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.candidature em b{font-size:.78rem;font-weight:600;color:var(--blue)}
+.bridge{margin-top:1.2rem}
+.hero blockquote{margin:1.6rem 0}
+.actions{margin-top:1.5rem}
+.electionBar{height:44px}
+.electionBar a{gap:1rem}
+.electionBar a>strong{font-size:.61rem;letter-spacing:.085em;white-space:nowrap}
+.electionBar a>strong span{color:#7696bb;padding-inline:.25rem}
+.electionBar em{flex:0 0 auto;margin-left:auto;padding-left:1.25rem;border-left:1px solid #405069;font-size:.6rem;letter-spacing:.1em;color:#ffd4c7}
+.header{top:44px}
+.hero{min-height:calc(100vh - 132px)}
+
+@media(min-width:681px) and (max-width:1024px){
+  .hero h1{font-size:clamp(2.85rem,5.35vw,3.55rem);line-height:.94;letter-spacing:-.05em;margin-bottom:1rem}
+  .roles{margin-bottom:.9rem}
+  .candidature{padding:.85rem .9rem .8rem;max-width:32rem;border-left-width:4px}
+  .candidature strong{font-size:clamp(.9rem,1.65vw,1.1rem)}
+  .candidature>span{margin-top:.4rem;font-size:.58rem}
+  .candidature em{margin-top:.5rem;padding-top:.5rem;font-size:.54rem}
+  .candidature em b{font-size:.64rem}
+  .bridge{margin-top:.8rem}
+  .hero blockquote{margin:1rem 0}
+}
+
+@media(max-width:680px){
+  .electionBar{height:58px;padding:0 var(--gutter)}
+  .electionBar a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.2rem .75rem;align-content:center}
+  .electionBar a>strong{font-size:0;line-height:1.2;white-space:normal;overflow:visible;text-overflow:clip}
+  .electionBar a>strong:before{content:"Candidate for Chairperson";display:block;font-size:.63rem;letter-spacing:.09em;color:white}
+  .electionBar a>strong:after{content:"IIA Telangana Chapter";display:block;margin-top:.22rem;font-size:.52rem;letter-spacing:.095em;color:#b9c9dc}
+  .electionBar a>strong span{display:none}
+  .electionBar em{grid-column:2;grid-row:1;padding-left:.75rem;font-size:.53rem;line-height:1.25;text-align:right}
+  .header{top:58px}
+  .hero h1{font-size:clamp(2.42rem,11vw,3rem);line-height:.96;letter-spacing:-.052em;white-space:nowrap;margin-top:1.75rem;margin-bottom:.9rem}
+  .roles{margin-bottom:1rem}
+  .candidature{padding:1rem 1rem .9rem;border-left-width:4px}
+  .candidature strong{font-size:clamp(1rem,4.5vw,1.2rem)}
+  .candidature>span{font-size:.61rem}
+  .candidature em{font-size:.56rem}
+  .candidature em b{font-size:.68rem}
+  .bridge{margin-top:1rem}
+}
+
+@media(max-width:370px){
+  .hero h1{font-size:2.38rem;letter-spacing:-.055em}
+  .electionBar{padding-inline:1rem}
+  .electionBar em{font-size:.49rem}
+}
