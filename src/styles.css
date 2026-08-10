@@ -44,3 +44,30 @@ section{scroll-margin-top:88px}.worlds,.journey,.manifesto,.professional,.educat
 .educationLine{position:relative}.educationLine:before{content:"";position:absolute;left:0;right:0;top:-1px;height:2px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform 1.2s ease}.educationLine:has(article.is-visible):before{transform:scaleX(1)}.educationLine article{transition-delay:calc(var(--order,0) * 100ms)}.educationLine article:last-child{background:rgba(7,63,143,.045);padding-left:1.5rem}
 @media(max-width:900px){.worldGrid:has(article:hover) article:not(:hover){opacity:1}.timeline{padding-left:1.2rem}.timeline:before{left:1.2rem}.timeline article,.timeline article:nth-child(even){width:100%;margin:0;padding:0 0 3.2rem 3.5rem;display:block}.timeline .dot,.timeline article:nth-child(even) .dot{left:-6px;right:auto}.timeline article>span{display:block;margin-bottom:.25rem}.professionalExperience{display:block;margin-left:0;border-bottom:0}.professionalDetail{display:none}.professionalIndex button{grid-template-columns:2.5rem 1fr;padding:1.5rem 0}.professionalIndex button strong,.professionalIndex button p{display:block}.professionalIndex button p{color:var(--muted);font-size:.84rem}.professionalIndex button.active{background:transparent}.educationLine:before{display:none}}
 @media(prefers-reduced-motion:reduce){.scrollProgress{display:none}[data-reveal],.timeline article,.promise>div,.educationLine article{opacity:1;transform:none}.worldGrid article,.commitmentGrid>article{transform:none!important}}
+
+/* Responsive hero refinement */
+@media(min-width:681px) and (max-width:1024px){
+  .hero{display:grid;grid-template-columns:minmax(0,57%) minmax(0,43%);min-height:calc(100vh - 122px);padding-left:var(--gutter);align-items:stretch}
+  .heroCopy{display:block;padding:clamp(2rem,4vh,3rem) clamp(1.5rem,3vw,2.5rem) 2.25rem 0}
+  .hero h1{font-size:clamp(4.1rem,8.5vw,5.5rem);line-height:.84;margin-bottom:1.25rem}
+  .roles{font-size:.58rem;line-height:1.45;padding-top:.75rem}
+  .hero blockquote{font-size:clamp(1.05rem,2vw,1.3rem);margin:1.4rem 0;padding-left:1rem}
+  .candidature{font-size:.58rem;line-height:1.45}.candidature strong{font-size:.65rem}.candidature em{margin-top:.35rem}
+  .bridge{font-size:.92rem;line-height:1.35;margin-top:.85rem}
+  .actions{margin-top:1.15rem;gap:.55rem;flex-wrap:wrap}.primary,.secondary{min-width:0;padding:.72rem .85rem;font-size:.67rem}
+  .portrait{height:auto;min-height:100%;aspect-ratio:auto}.portrait img{object-position:50% 16%}.portrait figcaption{padding:.65rem .85rem;font-size:.52rem}
+}
+@media(max-width:680px){
+  .hero{display:grid;grid-template-columns:1fr;min-height:0;padding:0;background-image:none}
+  .heroCopy{display:contents}
+  .hero h1{order:1;margin:2rem var(--gutter) 1.1rem;font-size:clamp(3.65rem,16vw,4.6rem);line-height:.82}
+  .roles{order:2;margin:0 var(--gutter) 1.15rem;padding-top:.7rem;font-size:.57rem;line-height:1.45}
+  .candidature{order:3;margin:0 var(--gutter);font-size:.58rem;line-height:1.45}.candidature strong{font-size:.66rem}.candidature em{margin-top:.35rem}
+  .intro{order:3;margin:0 var(--gutter)}
+  .bridge{order:4;margin:1rem var(--gutter) 1.35rem;font-size:.95rem;line-height:1.35}
+  .portrait{order:5;width:100%;height:auto;min-height:0;aspect-ratio:4/4.55}.portrait img{object-position:50% 14%}.portrait figcaption{padding:.6rem .8rem;font-size:.5rem}
+  .hero blockquote{order:6;margin:1.5rem var(--gutter) 0;padding-left:1rem;font-size:1.18rem;line-height:1.35}
+  .actions{order:7;margin:1.25rem var(--gutter) 2.25rem;display:grid;grid-template-columns:1fr 1fr;gap:.55rem}
+  .primary,.secondary{width:100%;min-width:0;padding:.72rem .75rem;font-size:.65rem;line-height:1.25;min-height:44px}
+}
+@media(max-width:390px){.actions{grid-template-columns:1fr}.hero h1{font-size:3.65rem}.electionBar a>strong{font-size:.52rem}.electionBar em{font-size:.5rem}}
