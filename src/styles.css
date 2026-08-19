@@ -53,6 +53,7 @@ h1,h2,h3{font-family:var(--sans);font-weight:600;letter-spacing:-.04em}
 .regionalPoints span{gap:.65rem}.regionalPoints b{font-size:.62rem;color:var(--terracotta);letter-spacing:.08em}
 .formAssurance{padding-left:1.3rem}.formAssurance p{margin:0}
 .closingNumber{width:3rem;height:3rem;display:grid;place-items:center;border:1px solid #f2b39f;color:#f2b39f;font-size:.72rem;font-weight:700;letter-spacing:.08em}
+.mobilePriorityCta{display:none}
 
 @media(max-width:1000px){
   .siteHeader{height:76px}.menuButton{display:block}.siteHeader nav{display:none;position:absolute;top:76px;left:0;right:0;padding:1.5rem var(--gutter);background:var(--navy);flex-direction:column;align-items:stretch;border-top:1px solid #314258}.siteHeader nav.open{display:flex}.headerCta{margin-top:.5rem}
@@ -75,6 +76,7 @@ h1,h2,h3{font-family:var(--sans);font-weight:600;letter-spacing:-.04em}
   .promiseSection{padding:4.5rem 1.25rem}.promiseSection article{grid-template-columns:2rem 1fr;gap:1rem}.promiseSection article>p{grid-column:2}.promiseSection h2{font-size:2.6rem}
   .prioritiesSection form{grid-template-columns:1fr;padding:1.4rem;box-shadow:7px 7px 0 var(--cyan)}.prioritiesSection form .full{grid-column:1}
   .closingSection>div,.closingSection aside{padding:4.5rem 1.25rem}.closingSection h2{font-size:3.6rem}
+  .mobilePriorityCta{position:fixed;left:1rem;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));z-index:28;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;background:var(--terracotta);color:white;font-size:.76rem;font-weight:700;box-shadow:0 8px 25px rgba(7,27,51,.25);opacity:0;visibility:hidden;transform:translateY(1rem);transition:opacity .2s,transform .2s,visibility .2s}.mobilePriorityCta.visible{opacity:1;visibility:visible;transform:translateY(0)}
   footer{grid-template-columns:1fr;gap:1.4rem;padding:2.5rem 1.25rem}footer>p:nth-child(2),footer>p:last-child{text-align:left}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.mobilePriorityCta{transform:none}}
