@@ -158,7 +158,7 @@ function PrioritiesForm() {
       <p>Strong leadership begins with listening. Share the issue, opportunity or idea you believe deserves the Chapter’s attention.</p>
       <div className="formAssurance"><MessageCircle/><p><strong>Your voice matters.</strong><br/>Responses are received privately and will help identify member priorities across Telangana.</p></div>
     </div>
-    <form name="member-priorities" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={submit}>
+    <form name="member-priorities" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={submit}>
       <input type="hidden" name="form-name" value="member-priorities"/>
       <p className="botField"><label>Do not fill this out: <input name="bot-field"/></label></p>
       <label>Full name<input name="name" autoComplete="name" required/></label>
