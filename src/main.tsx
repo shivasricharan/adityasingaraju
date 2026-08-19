@@ -32,7 +32,7 @@ function Header() {
     <button className="menuButton" onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label="Toggle navigation">{open ? <X/> : <Menu/>}</button>
     <nav className={open ? 'open' : ''} aria-label="Primary navigation">
       {nav.map(([label, id]) => <a key={id} href={'#' + id} onClick={() => setOpen(false)}>{label}</a>)}
-      <a className="headerCta" href="#commitments" onClick={() => setOpen(false)}>Explore my vision <ArrowRight/></a>
+      <a className="headerCta" href="#priorities" onClick={() => setOpen(false)}>Share your priority <ArrowRight/></a>
     </nav>
   </header>
 }
@@ -157,7 +157,7 @@ function PrioritiesForm() {
   return <section id="priorities" className="prioritiesSection">
     <div className="prioritiesCopy">
       <SectionHeading number="04" title="What should IIA Telangana prioritise?"/>
-      <p>Strong leadership begins with listening. Share the issue, opportunity or idea you believe deserves the Chapter’s attention.</p>
+      <p><strong>Your experience can strengthen this vision.</strong> What issue, opportunity or idea should IIA Telangana address? Share your priority with me.</p>
       <div className="formAssurance"><p><strong>Your voice matters.</strong><br/>I will receive responses privately and use them to understand member priorities across Telangana.</p></div>
     </div>
     <form name="member-priorities" method="POST" action="/thank-you.html" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={submit}>
@@ -186,6 +186,17 @@ function Footer() {
   return <footer><Brand/><p>A stronger, more connected IIA Telangana.</p><p>© {new Date().getFullYear()} Dr. Aditya Singaraju</p></footer>
 }
 
-function App() { return <><Header/><main><Hero/><WhyAditya/><Pillars/><Journey/><Commitments/><Reach/><Promise/><PrioritiesForm/><Closing/></main><Footer/></> }
+function MobilePriorityCta() {
+  const [visible, setVisible] = React.useState(false)
+  React.useEffect(() => {
+    const update = () => setVisible(window.scrollY > 360)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    return () => window.removeEventListener('scroll', update)
+  }, [])
+  return <a className={'mobilePriorityCta' + (visible ? ' visible' : '')} href="#priorities">Share your priority <ArrowRight/></a>
+}
+
+function App() { return <><Header/><main><Hero/><WhyAditya/><Pillars/><Journey/><Commitments/><PrioritiesForm/><Reach/><Promise/><Closing/></main><MobilePriorityCta/><Footer/></> }
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>)
