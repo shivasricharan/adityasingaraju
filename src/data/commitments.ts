@@ -1,20 +1,20 @@
 export const commitmentGroups = [
   { theme: 'Stronger Chapter', items: [
-    ['An Independent and Empowered Telangana Chapter', 'Strengthen the Chapter’s voice, agency and institutional capacity across the state.'],
-    ['Transparent, Inclusive and Participative Governance', 'Create open processes that invite member participation and shared responsibility.'],
-    ['Regional Outreach Across Telangana', 'Extend access, dialogue and Chapter activity beyond Hyderabad.'],
+    ['An Independent and Empowered Telangana Chapter', 'Strengthen the Chapter’s identity and voice while recognising regional talent and creating Telangana-specific initiatives.'],
+    ['Transparent, Inclusive and Participative Governance', 'Open communication, inclusive committees and periodic updates that make leadership accessible and accountable.'],
+    ['Regional Outreach Across Telangana', 'Create meaningful regional-centre interactions and district-level programmes beyond Hyderabad.'],
   ]},
   { theme: 'Next Generation', items: [
-    ['Young Architects Leadership Forum', 'Create a platform for emerging voices to lead, connect and contribute.'],
-    ['Academia–Practice Integration', 'Build sustained exchange between classrooms, studios and the profession.'],
-    ['Dedicated Academic Committee', 'Focus the Chapter’s academic initiatives, partnerships and continuity.'],
+    ['Young Architects Leadership Forum', 'Create leadership opportunities and meaningful participation for younger architects.'],
+    ['Academia–Practice Integration', 'Connect institutions and practitioners through internships, placements and industry exposure.'],
+    ['Dedicated Academic Committee', 'Support schools, faculty, researchers and students through focused programmes and partnerships.'],
   ]},
   { theme: 'Knowledge & Growth', items: [
-    ['IIA Telangana as a Learning Platform', 'Enable regular learning, dialogue and professional development.'],
-    ['Promoting Research and Publications', 'Make local architectural inquiry visible, rigorous and shareable.'],
-    ['Telangana Architects Knowledge Network', 'Connect expertise across generations, regions and disciplines.'],
+    ['IIA Telangana as a Learning Platform', 'Create architect conversations, podcasts, discussions, feature articles and continuous knowledge sharing.'],
+    ['Promoting Research and Publications', 'Enable research presentations, publications and documentation of architectural work.'],
+    ['Telangana Architects Knowledge Network', 'Connect senior architects, young professionals, academicians, students and industry experts.'],
   ]},
   { theme: 'Digital Future', items: [
-    ['Digital Transformation of the Chapter', 'Create accessible, efficient systems for communication, participation and knowledge.'],
+    ['Digital Transformation of the Chapter', 'Build an updated member directory, online learning resources and a useful digital newsletter.'],
   ]},
 ]
