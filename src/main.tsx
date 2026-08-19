@@ -1,52 +1,189 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowDownRight, ArrowRight, Menu, X } from 'lucide-react'
-import { profile } from './data/profile'
-import { siteConfig } from './data/siteConfig'
-import { iiaJourney } from './data/iiaJourney'
+import {
+  ArrowDownRight, ArrowRight, BookOpen, Building2, GraduationCap,
+  Lightbulb, Map, Menu, MessageCircle, Network, Search, ShieldCheck,
+  Sparkles, Users, X
+} from 'lucide-react'
 import { commitmentGroups } from './data/commitments'
-import { research } from './data/research'
+import { iiaJourney } from './data/iiaJourney'
 import './styles.css'
 
-const nav = [['About','about'],['IIA Journey','journey'],['Vision','vision'],['Practice & Research','research'],['Education','education']]
-const professionalItems = [
-  ['Architecture & Practice','Principal Architect, IDENTIFIVE Designs','Architecture · Interiors · Residential · Commercial · Retail · Restaurant · Product · Identity'],
-  ['Academic Leadership','25+ years at JNAFA University','Head, Department of Architecture 2015–2017 · Teaching · Mentoring · Curriculum · Academic governance'],
-  ['Research','Environmental Psychology · Spatial Cognition · Wayfinding','Human navigation · Design education · Design thinking · Design communication'],
-  ['Mentoring','Architecture aptitude preparation','NATA · JEE B.Arch · Design thinking · Spatial reasoning']
+const nav = [['Why Aditya', 'why'], ['Journey', 'journey'], ['Commitments', 'commitments'], ['Priorities', 'priorities']]
+
+const reasons = [
+  { icon: Building2, title: 'Understands the profession', text: 'A practising architect who brings real professional realities into every conversation.' },
+  { icon: GraduationCap, title: 'Invested in the next generation', text: 'An educator and mentor with more than 25 years of contribution to architectural learning.' },
+  { icon: Users, title: 'Knows the institution', text: 'Active IIA Telangana service since 2012, including Executive Committee and Joint Honorary Secretary roles.' },
+  { icon: ShieldCheck, title: 'Leads with integrity', text: 'A commitment to listening, participation, transparency and shared responsibility.' },
 ]
 
-function Header(){const [open,setOpen]=React.useState(false);const [active,setActive]=React.useState('about');React.useEffect(()=>{const sections=nav.map(([,id])=>document.getElementById(id)).filter(Boolean) as HTMLElement[];const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)setActive(entry.target.id)}),{rootMargin:'-25% 0px -60%'});sections.forEach(section=>observer.observe(section));return()=>observer.disconnect()},[]);return <>{siteConfig.electionMode?<div className="electionBar"><a href="#vision"><strong>Dr. Aditya Singaraju <span aria-hidden="true">·</span> Candidate for Chairperson <span aria-hidden="true">·</span> IIA Telangana Chapter</strong></a></div>:null}<header className={siteConfig.electionMode?'header':'header noElection'}><a className="brand" href="#top" aria-label="Dr. Aditya Singaraju, home"><span>AS</span><b>Dr. Aditya<br/>Singaraju</b></a><button className="menu" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-label="Toggle menu">{open?<X/>:<Menu/>}</button><nav className={open?'open':''} aria-label="Primary navigation">{nav.map(([label,id])=><a className={active===id?'active':''} aria-current={active===id?'location':undefined} key={id} href={'#'+id} onClick={()=>setOpen(false)}>{label}</a>)}<a className="navCta" href={siteConfig.electionMode?'#vision':'#research'}>{siteConfig.electionMode?'My Vision for IIA Telangana':'Explore My Work'} <ArrowRight/></a></nav></header></>}
+const pillars = [
+  { icon: Building2, label: 'Practice', text: 'Real-world understanding of architects, studios and professional challenges.' },
+  { icon: GraduationCap, label: 'Education', text: 'More than 25 years of teaching, mentoring and academic leadership.' },
+  { icon: Search, label: 'Research', text: 'A thoughtful, evidence-led approach to people, spaces and institutions.' },
+  { icon: Users, label: 'IIA Service', text: 'Experience of Chapter responsibility, collaboration and contribution.' },
+]
 
-function ScrollProgress(){const [progress,setProgress]=React.useState(0);React.useEffect(()=>{let frame=0;const update=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;setProgress(max>0?scrollY/max:0)})};update();addEventListener('scroll',update,{passive:true});addEventListener('resize',update);return()=>{cancelAnimationFrame(frame);removeEventListener('scroll',update);removeEventListener('resize',update)}},[]);return <div className="scrollProgress" aria-hidden="true" style={{transform:`scaleX(${progress})`}}/>}
+const commitmentIcons = [ShieldCheck, Sparkles, BookOpen, Network]
 
-function useReveals(){React.useEffect(()=>{const items=document.querySelectorAll<HTMLElement>('[data-reveal], .timeline article, .promise > div, .educationLine article');const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.18});items.forEach(item=>observer.observe(item));return()=>observer.disconnect()},[])}
+function Brand() {
+  return <a className="brand" href="#top" aria-label="Dr. Aditya Singaraju, home"><span>AS</span><b>Dr. Aditya<br/>Singaraju</b></a>
+}
 
-function SectionTitle({number,title,children}:{number:string,title:string,children?:React.ReactNode}){return <div className="sectionTitle reveal"><span>{number}</span><h2>{title}</h2>{children}</div>}
+function Header() {
+  const [open, setOpen] = React.useState(false)
+  return <header className="siteHeader">
+    <Brand/>
+    <button className="menuButton" onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label="Toggle navigation">{open ? <X/> : <Menu/>}</button>
+    <nav className={open ? 'open' : ''} aria-label="Primary navigation">
+      {nav.map(([label, id]) => <a key={id} href={'#' + id} onClick={() => setOpen(false)}>{label}</a>)}
+      <a className="headerCta" href="#commitments" onClick={() => setOpen(false)}>Explore the vision <ArrowRight/></a>
+    </nav>
+  </header>
+}
 
-function App(){const [activeTheme,setActiveTheme]=React.useState(0);const [activeProfessional,setActiveProfessional]=React.useState(0);useReveals();return <><ScrollProgress/><Header/><main id="top">
-  <section className="hero ruled" aria-labelledby="hero-title"><div className="heroCopy"><h1 id="hero-title">Dr. Aditya Singaraju</h1><p className="roles">{profile.roles}</p>{siteConfig.electionMode?<><div className="candidature" aria-label="Election candidature"><strong>Candidate for Chairperson</strong><span>Indian Institute of Architects — Telangana Chapter</span></div><a className="voteCta" href="#support">I Seek Your Vote <ArrowDownRight/></a></>:<p className="intro">{profile.bio}</p>}<p className="bridge">Bringing practice, academia and the fraternity closer together.</p><blockquote>“{profile.statement}”</blockquote><div className="actions"><a className="primary" href="#vision">My Vision for IIA Telangana <ArrowDownRight/></a><a className="secondary" href="#journey">IIA Journey <ArrowRight/></a></div></div><figure className="portrait"><img src="/aditya-singaraju.jpg" width="1241" height="1600" alt="Portrait of Dr. Aditya Singaraju" fetchPriority="high"/><figcaption>Architect · Educator · Researcher</figcaption></figure></section>
+function SectionHeading({ number, title, intro }: { number: string, title: string, intro?: string }) {
+  return <div className="sectionHeading"><span>{number}</span><h2>{title}</h2>{intro ? <p>{intro}</p> : null}</div>
+}
 
-  <section id="about" className="worlds"><SectionTitle number="01" title="Practice. Education. Research."><p>Three parts of one professional journey.</p></SectionTitle><div className="worldGrid">{[
-    ['Practice','Principal Architect at IDENTIFIVE Designs, working across architecture, interiors, residential, commercial, retail, restaurant and identity design.'],
-    ['Education','25+ years associated with the School of Planning and Architecture, JNAFA University—teaching, mentoring, curriculum development and academic leadership.'],
-    ['Research','Inquiry at the intersection of environmental psychology, spatial cognition, human navigation and wayfinding behaviour.']
-  ].map((x,i)=><article data-reveal tabIndex={0} key={x[0]}><span>0{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p><ArrowDownRight aria-hidden="true"/></article>)}</div></section>
+function Hero() {
+  return <section id="top" className="hero">
+    <div className="heroCopy">
+      <p className="candidate">Dr. Aditya Singaraju · Candidate for Chairperson · IIA Telangana Chapter</p>
+      <h1>A stronger,<br/>more connected<br/><em>IIA Telangana.</em></h1>
+      <p className="heroLead">Experience. Ideas. Inclusive leadership.</p>
+      <p className="heroText">Bringing architectural practice, education, research and the fraternity closer together—with a Chapter that creates value and opportunity for every member.</p>
+      <div className="heroActions">
+        <a className="primaryButton" href="#commitments">Explore his vision <ArrowDownRight/></a>
+        <a className="textButton" href="#why">Why Aditya <ArrowRight/></a>
+      </div>
+      <blockquote>“Experience as my foundation. Learning as my constant companion. Service as my commitment.”</blockquote>
+    </div>
+    <figure className="heroPortrait">
+      <img src="/aditya-singaraju.jpg" width="1241" height="1600" alt="Portrait of Dr. Aditya Singaraju" fetchPriority="high"/>
+      <figcaption>Architect · Educator · Researcher · Design Professional</figcaption>
+    </figure>
+  </section>
+}
 
-  <section id="journey" className="journey band"><SectionTitle number="02" title="IIA journey"><p>My journey with IIA began in 2012—through service, responsibility and contribution. This candidature is a continuation of that journey.</p></SectionTitle><div className="timeline">{iiaJourney.map((m,i)=><article key={m.year}><div className="dot"/><span>{String(i+1).padStart(2,'0')}</span><div><h3>{m.year}</h3><p>{m.text}</p></div></article>)}</div></section>
+function WhyAditya() {
+  return <section id="why" className="whySection">
+    <div className="whyIntro">
+      <SectionHeading number="01" title="Why give Aditya an opportunity?"/>
+      <p>A leader who understands the profession, the institution and the people it serves.</p>
+      <strong>Experience to understand. Ideas to strengthen. Commitment to serve.</strong>
+    </div>
+    <div className="reasonGrid">
+      {reasons.map(({ icon: Icon, title, text }, index) => <article key={title}><span>0{index + 1}</span><Icon aria-hidden="true"/><h3>{title}</h3><p>{text}</p></article>)}
+    </div>
+  </section>
+}
 
-  <section id="iia" className="stepping typographic"><div className="statementIndex" aria-hidden="true">03</div><div><SectionTitle number="03" title="Why I’m standing"/><blockquote>Listen before leading.</blockquote><p>I believe leadership begins with listening—to members, young architects, practitioners, educators and voices across Telangana.</p><p>My journey across practice, academia, research and IIA has shown me the value of bringing these communities closer. I am stepping forward to help build a Chapter that is more participative, connected, transparent and useful to every member.</p></div></section>
+function Pillars() {
+  return <section className="pillarsSection" aria-labelledby="pillars-title">
+    <div className="pillarsTitle"><p>One professional journey</p><h2 id="pillars-title">Four perspectives.<br/><em>One leadership vision.</em></h2></div>
+    <div className="pillarDiagram">
+      {pillars.map(({ icon: Icon, label, text }, index) => <article key={label}><div className="pillarIcon"><Icon aria-hidden="true"/></div><span>0{index + 1}</span><h3>{label}</h3><p>{text}</p></article>)}
+      <div className="diagramCore" aria-hidden="true">IIA<br/>Telangana</div>
+    </div>
+  </section>
+}
 
-  <section id="vision" className="manifesto"><SectionTitle number="04" title="Ten commitments"><p>A considered framework for a stronger, more connected IIA Telangana.</p></SectionTitle><div className="commitmentGrid">{commitmentGroups.map((g,gi)=><article className={activeTheme===gi?'active':''} onMouseEnter={()=>setActiveTheme(gi)} onFocus={()=>setActiveTheme(gi)} tabIndex={0} key={g.theme}><header><span>0{gi+1}</span><h3>{g.theme}</h3></header><ol start={commitmentGroups.slice(0,gi).reduce((n,x)=>n+x.items.length,1)}>{g.items.map(([t,d])=><li key={t}><h4>{t}</h4><p>{d}</p></li>)}</ol></article>)}</div></section>
+function Journey() {
+  return <section id="journey" className="journeySection">
+    <SectionHeading number="02" title="A journey of learning, participation and service" intro="Since 2012, Aditya’s IIA journey has grown through responsibility, collaboration and contribution at the grassroots level."/>
+    <div className="journeyLine">
+      {iiaJourney.map((item, index) => <article key={item.year + item.title}><div className="year"><span>{String(index + 1).padStart(2, '0')}</span><strong>{item.year}</strong></div><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}
+    </div>
+  </section>
+}
 
-  <section className="promise"><p>My promise to members</p>{['Listen before leading.','Collaborate before deciding.','Act with transparency.','Create opportunities.'].map((x,i)=><div key={x}><span>0{i+1}</span><h2>{x}</h2></div>)}</section>
+function Commitments() {
+  let count = 0
+  return <section id="commitments" className="commitmentsSection">
+    <SectionHeading number="03" title="Ten commitments to a stronger Chapter" intro="A practical framework to make IIA Telangana more participative, connected, useful and future-ready."/>
+    <div className="commitmentGroups">
+      {commitmentGroups.map((group, groupIndex) => {
+        const Icon = commitmentIcons[groupIndex]
+        return <article className={'commitmentGroup group' + (groupIndex + 1)} key={group.theme}>
+          <header><Icon aria-hidden="true"/><span>0{groupIndex + 1}</span><h3>{group.theme}</h3></header>
+          <div>{group.items.map(([title, description]) => {
+            count += 1
+            return <section key={title}><b>{String(count).padStart(2, '0')}</b><div><h4>{title}</h4><p>{description}</p></div></section>
+          })}</div>
+        </article>
+      })}
+    </div>
+  </section>
+}
 
-  <section id="research" className="professional"><SectionTitle number="05" title="Practice & research"/><div className="professionalExperience"><div className="professionalIndex">{professionalItems.map((item,i)=><button type="button" aria-pressed={activeProfessional===i} className={activeProfessional===i?'active':''} onMouseEnter={()=>setActiveProfessional(i)} onFocus={()=>setActiveProfessional(i)} onClick={()=>setActiveProfessional(i)} key={item[0]}><span>0{i+1}</span><div><h3>{item[0]}</h3><strong>{item[1]}</strong><p>{item[2]}</p></div></button>)}</div><aside className="professionalDetail" aria-live="polite"><span>0{activeProfessional+1}</span><h3>{professionalItems[activeProfessional][0]}</h3><strong>{professionalItems[activeProfessional][1]}</strong><p>{professionalItems[activeProfessional][2]}</p></aside></div><div className="researchRail" aria-label="Research interests">{research.map(x=><span tabIndex={0} key={x}>{x}</span>)}</div></section>
+function Reach() {
+  return <section className="reachSection">
+    <div className="connectionGraphic" aria-hidden="true"><Map/><span className="node n1"/><span className="node n2"/><span className="node n3"/><span className="node n4"/><span className="node n5"/><i className="line l1"/><i className="line l2"/><i className="line l3"/><i className="line l4"/></div>
+    <div><p>Beyond Hyderabad · Across Telangana</p><h2>A Chapter that reaches, listens and connects.</h2><p>Regional voices, local talent and member participation should shape the Chapter’s future. Aditya’s vision is to create meaningful connection and opportunity across Telangana.</p><a href="#priorities">Share what your region needs <ArrowRight/></a></div>
+  </section>
+}
 
-  <section id="education" className="education band"><SectionTitle number="06" title="Education"/><div className="educationLine">{profile.education.map(e=><article key={e.year}><span>{e.year}</span><h3>{e.degree}</h3><p>{e.institution}</p></article>)}</div><p className="phd">Ph.D. research focus: Environmental Psychology, spatial cognition, human navigation and wayfinding behaviour.</p></section>
+function Promise() {
+  const promises = [
+    ['Listen before leading.', 'Understand members’ needs through continuous dialogue.'],
+    ['Collaborate before deciding.', 'Build consensus and collective ownership.'],
+    ['Act with transparency.', 'Maintain openness and accountability.'],
+    ['Create opportunities.', 'Ensure every architect finds value in the Chapter.'],
+  ]
+  return <section className="promiseSection"><p>My promise to members</p>{promises.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h2>{title}</h2><p>{text}</p></article>)}</section>
+}
 
-  {siteConfig.electionMode?<section id="support" className="newChapter"><p>A new chapter for IIA Telangana</p><div><h2>Together, let us build a Chapter that is <em>inclusive, inspiring and accountable.</em></h2><blockquote>With experience as my foundation, learning as my constant companion and service as my commitment, I seek the opportunity to continue serving our fraternity.</blockquote><p>Dr. Aditya Singaraju<br/>Candidate for Chairperson · IIA Telangana Chapter</p></div></section>:null}
+function PrioritiesForm() {
+  const [status, setStatus] = React.useState<'idle'|'sending'|'success'|'error'>('idle')
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    setStatus('sending')
+    const form = event.currentTarget
+    const params = new URLSearchParams()
+    new FormData(form).forEach((value, key) => params.append(key, String(value)))
+    try {
+      const response = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: params.toString() })
+      if (!response.ok) throw new Error('Submission failed')
+      form.reset()
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+  return <section id="priorities" className="prioritiesSection">
+    <div className="prioritiesCopy">
+      <SectionHeading number="04" title="What should IIA Telangana prioritise?"/>
+      <p>Strong leadership begins with listening. Share the issue, opportunity or idea you believe deserves the Chapter’s attention.</p>
+      <div className="formAssurance"><MessageCircle/><p><strong>Your voice matters.</strong><br/>Responses are received privately and will help identify member priorities across Telangana.</p></div>
+    </div>
+    <form name="member-priorities" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onSubmit={submit}>
+      <input type="hidden" name="form-name" value="member-priorities"/>
+      <p className="botField"><label>Do not fill this out: <input name="bot-field"/></label></p>
+      <label>Full name<input name="name" autoComplete="name" required/></label>
+      <label>City / region<input name="city" autoComplete="address-level2" required/></label>
+      <label>Email or phone <span>(optional)</span><input name="contact"/></label>
+      <label>Primary area of interest<select name="priority" required defaultValue=""><option value="" disabled>Select a priority</option><option>Young architects and leadership</option><option>Regional outreach</option><option>Professional practice support</option><option>Transparent governance</option><option>Education and research</option><option>Digital member services</option><option>Other</option></select></label>
+      <label className="full">Your idea or suggestion<textarea name="message" rows={5} required placeholder="What would make the Chapter more valuable to you?"/></label>
+      <label className="consent full"><input type="checkbox" name="consent" value="yes" required/> I consent to this response being used privately to understand campaign and member priorities.</label>
+      <button className="primaryButton" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : 'Share my priorities'} <ArrowRight/></button>
+      <p className={'formStatus ' + status} aria-live="polite">{status === 'success' ? 'Thank you. Your priorities have been received.' : status === 'error' ? 'The form could not be sent. Please try again.' : ''}</p>
+    </form>
+  </section>
+}
 
-  </main><footer><a className="brand inverse" href="#top"><span>AS</span><b>Dr. Aditya<br/>Singaraju</b></a><p>{profile.roles}</p><p>© {new Date().getFullYear()} Dr. Aditya Singaraju</p></footer></>}
+function Closing() {
+  return <section id="support" className="closingSection">
+    <div><p>A new chapter for IIA Telangana</p><h2>Give experience, ideas and inclusive leadership <em>an opportunity.</em></h2><p>With your trust and participation, Dr. Aditya Singaraju seeks the opportunity to help build a Chapter that supports established practitioners, encourages young architects and represents members across Telangana.</p><a className="lightButton" href="#top">Discover Aditya’s journey <ArrowRight/></a></div>
+    <aside><Lightbulb/><blockquote>“Together, let us build a Chapter that is inclusive, inspiring and accountable.”</blockquote><strong>Dr. Aditya Singaraju</strong><span>Candidate for Chairperson · IIA Telangana Chapter</span></aside>
+  </section>
+}
+
+function Footer() {
+  return <footer><Brand/><p>A stronger, more connected IIA Telangana.</p><p>© {new Date().getFullYear()} Dr. Aditya Singaraju</p></footer>
+}
+
+function App() { return <><Header/><main><Hero/><WhyAditya/><Pillars/><Journey/><Commitments/><Reach/><Promise/><PrioritiesForm/><Closing/></main><Footer/></> }
 
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>)
