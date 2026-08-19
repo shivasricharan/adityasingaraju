@@ -9,7 +9,7 @@ const nav = [['Why me?', 'why'], ['My journey', 'journey'], ['My commitments', '
 
 const reasons = [
   { title: 'I understand the profession', text: 'As a practising architect, I bring real professional realities into every conversation.' },
-  { title: 'I invest in the next generation', text: 'I bring more than 25 years of experience as an educator, mentor and academic leader.' },
+  { title: 'I connect practice with education', text: 'My experience across professional practice, teaching and mentorship helps bring learning and real-world needs closer together.' },
   { title: 'I know the institution', text: 'I have served IIA Telangana since 2012, including Executive Committee and Joint Honorary Secretary responsibilities.' },
   { title: 'I lead with integrity', text: 'I am committed to listening, participation, transparency and shared responsibility.' },
 ]
