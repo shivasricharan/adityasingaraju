@@ -120,7 +120,16 @@ function Commitments() {
 
 function Reach() {
   return <section className="reachSection">
-    <div className="connectionGraphic" aria-hidden="true"><Map/><span className="node n1"/><span className="node n2"/><span className="node n3"/><span className="node n4"/><span className="node n5"/><i className="line l1"/><i className="line l2"/><i className="line l3"/><i className="line l4"/></div>
+    <div className="regionalPanel">
+      <div className="regionalIcon" aria-hidden="true"><Map/></div>
+      <p>Connected across Telangana</p>
+      <h3>Every region.<br/>Every member.<br/>A stronger voice.</h3>
+      <div className="regionalPoints" aria-label="Regional priorities">
+        <span><Users aria-hidden="true"/> Regional voices</span>
+        <span><GraduationCap aria-hidden="true"/> Local talent</span>
+        <span><Network aria-hidden="true"/> Shared opportunity</span>
+      </div>
+    </div>
     <div><p>Beyond Hyderabad · Across Telangana</p><h2>A Chapter that reaches, listens and connects.</h2><p>Regional voices, local talent and member participation should shape the Chapter’s future. Aditya’s vision is to create meaningful connection and opportunity across Telangana.</p><a href="#priorities">Share what your region needs <ArrowRight/></a></div>
   </section>
 }
