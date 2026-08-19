@@ -45,6 +45,14 @@ footer{min-height:9rem;display:grid;grid-template-columns:1fr 1fr 1fr;align-item
 .promiseSection{padding-block:clamp(4.5rem,6.5vw,6.5rem)}
 h1,h2,h3{font-family:var(--sans);font-weight:600;letter-spacing:-.04em}
 .heroLead,.hero blockquote,.closingSection blockquote{font-family:var(--sans)}
+.cardNumber,.pillarNumber{display:block;font:600 2.6rem/1 var(--sans);letter-spacing:-.06em}
+.cardNumber{color:var(--terracotta)}.pillarNumber{color:var(--blue)}
+.reasonGrid h3{margin-top:2rem}.pillarDiagram h3{margin-top:1.8rem}
+.commitmentGroup header{grid-template-columns:2.5rem 1fr;gap:1rem}.commitmentGroup header>svg{display:none}.commitmentGroup header span{font-size:.72rem}
+.regionalMark{width:4rem;height:4rem;display:grid;place-items:center;border:1px solid var(--blue);border-radius:50%;background:rgba(255,255,255,.7);color:var(--blue);font-size:.78rem;font-weight:700;letter-spacing:.12em}
+.regionalPoints span{gap:.65rem}.regionalPoints b{font-size:.62rem;color:var(--terracotta);letter-spacing:.08em}
+.formAssurance{padding-left:1.3rem}.formAssurance p{margin:0}
+.closingNumber{width:3rem;height:3rem;display:grid;place-items:center;border:1px solid #f2b39f;color:#f2b39f;font-size:.72rem;font-weight:700;letter-spacing:.08em}
 
 @media(max-width:1000px){
   .siteHeader{height:76px}.menuButton{display:block}.siteHeader nav{display:none;position:absolute;top:76px;left:0;right:0;padding:1.5rem var(--gutter);background:var(--navy);flex-direction:column;align-items:stretch;border-top:1px solid #314258}.siteHeader nav.open{display:flex}.headerCta{margin-top:.5rem}
